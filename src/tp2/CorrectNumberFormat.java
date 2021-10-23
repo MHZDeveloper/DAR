@@ -12,13 +12,17 @@ public class CorrectNumberFormat {
         //get input from console
         String line = scanner.nextLine();
 
-        //convert it to number
-        int num = Integer.parseInt(line);
+        try{
+            int num = Integer.parseInt(line);
+            System.out.println("It's a number :)");
 
-        // todo print the answer based on the input
+        }
+        catch(NumberFormatException e)
+        {
+            System.out.println("It's not a number :(");
+        }
 
-        System.out.println("It's a number :)");
 
-        System.out.println("It's not a number :(");
+
     }
 }
