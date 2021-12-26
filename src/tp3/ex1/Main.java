@@ -2,23 +2,15 @@ package tp3.ex1;
 
 public class Main {
 
-
-    // create a class that extends thread and another one that implements runnable
-    // they should print 'my thread is running' when running
-    // when both terminated, print 'it s over !!'
-    public static class test1 extends Thread
-    {
+    public static class Th1 extends Thread {
+        public Th1() {}
         @Override
-        public void run()
-        {
+        public void run() {
             System.out.println("My thread is running");
         }
-
     }
 
-    public static class test2 implements Runnable
-    {
-
+    public static class Th2 implements Runnable {
         @Override
         public void run() {
             System.out.println("My thread is running");
@@ -26,22 +18,15 @@ public class Main {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        Th1 th1 = new Th1();
+        Thread th2 = new Thread(new Th2());
 
-        test1 t= new test1();
-        test2 t2=new test2();
-        Thread t1=new Thread(t2);
+        th1.start();
+        th2.start();
 
-        t.start();
-        t1.start();
-        t.join();
-        t1.join();
+        th1.join();
+        th2.join();
 
-        System.out.println("It's over");
-
-
-        //output:
-        //my thread is running
-        //my thread is running
-        //it s over !!
+        System.out.println("It's over !!");
     }
 }

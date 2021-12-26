@@ -21,10 +21,30 @@ public class Server {
         BufferedReader inServer = new BufferedReader(new InputStreamReader(socClient.getInputStream()));
         PrintWriter outServer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socClient.getOutputStream())), true);
 
-        // Read message sent by the client
-        inServer.readLine();
-        // Write message to the client
+        //Scenario 1
+        String str = inServer.readLine();
+        str = str.toUpperCase();
+        outServer.println(str);
+
+        //Scenario 2
+        String str2 = inServer.readLine();
+        char c = inServer.readLine().charAt(0);
+        outServer.println(str2.indexOf(c));
+
+        //Scenario 3
+        String str4 = inServer.readLine();
+        int x=0;
+        for(int i=0;i<str4.length()/2;i++){
+            if((str4.charAt(i))!=(str4.charAt(str4.length()-i-1)))
+                x++;
+        }
+        if (x==0)
+            outServer.println("Palyndrome");
+        else
+            outServer.println("Pas palydrome");
+
         System.out.println("something");
+
 
         // ****** if you're using DataInputStream & DataOutputStream ******
 

@@ -20,10 +20,32 @@ public class Client {
         BufferedReader inClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         PrintWriter outClient = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
 
+        //Scenario 1
+        System.out.print("Enter your msg : ");
+        String str = new Scanner(System.in).nextLine();
         // Write message to the server
-        outClient.println("something");
+        outClient.println(str);
         // Read a message from the server
-        inClient.readLine();
+        str = inClient.readLine();
+        System.out.println("To uppercase : "+str);
+
+        //Scenario 2
+        System.out.println("enter a word :");
+        String str2 = new Scanner(System.in).nextLine();
+        outClient.println(str2);
+
+        System.out.println("enter a character :");
+        String str3 = new Scanner(System.in).nextLine();
+        outClient.println(str3);
+
+        String ind = inClient.readLine();
+        System.out.println("index of "+str3+" in "+str2+" : "+ind);
+
+        //Scenario 3
+        System.out.println("enter a word palyndrome:");
+        String str4 = new Scanner(System.in).nextLine();
+        outClient.println(str4);
+        System.out.println(inClient.readLine());
 
         //****** if you're using DataInputStream & DataOutputStream ******
 
